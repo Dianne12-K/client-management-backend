@@ -1,23 +1,23 @@
 # Python
-   __pycache__/
-   *.py[cod]
-   *$py.class
-   *.so
-   .Python
-   venv/
-   env/
-   ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
 
-   # Flask
-   instance/
-   .env
-   .flaskenv
-   *.db
+# Flask
+instance/
+.env
+.flaskenv
+*.db
 
-   # IDE
-   .idea/
-   *.iml
+# IDE
+.idea/
+*.iml
 
-   # OS
-   .DS_Store
-   Thumbs.db
+# OS
+.DS_Store
+Thumbs.db
