@@ -11,9 +11,21 @@ class Config:
 
     # JWT Configuration
     JWT_EXPIRATION_DAYS = 7
+    # Password Reset Configuration (separate from JWT)
+    PASSWORD_RESET_TOKEN_EXPIRATION_DAYS = 7  # Reset links last 1 hour
 
     # CORS Configuration
     CORS_HEADERS = 'Content-Type'
+    # Frontend URL
+    FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
+
+    # Email Configuration
+    MAIL_SERVER = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
+    MAIL_PORT = int(os.environ.get('MAIL_PORT', 587))
+    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'True').lower() == 'true'
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER', os.environ.get('MAIL_USERNAME'))
 
 class DevelopmentConfig(Config):
     """Development configuration"""

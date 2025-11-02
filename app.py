@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from config import Config
 from swagger_config import swagger_config, swagger_template
 from models import db
+from utils.email import mail
 
 # Load environment variables
 load_dotenv()
@@ -18,6 +19,7 @@ def create_app(config_class=Config):
     # Initialize extensions
     CORS(app)
     db.init_app(app)
+    mail.init_app(app)  # Initialize Flask-Mail
 
     # Initialize Swagger
     global swagger
@@ -28,11 +30,16 @@ def create_app(config_class=Config):
     from routes.client_routes import client_bp
     from routes.payment_routes import payment_bp
     from routes.health_routes import health_bp
+    from routes.projects_routes import project_bp
+    from routes.tasks_routes import task_bp
 
     app.register_blueprint(health_bp, url_prefix='/api')
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(client_bp, url_prefix='/api/clients')
     app.register_blueprint(payment_bp, url_prefix='/api/payments')
+    app.register_blueprint(project_bp, url_prefix='/api/projects')
+    app.register_blueprint(task_bp, url_prefix='/api/tasks')
+
 
     # Register error handlers
     from routes.error_handlers import register_error_handlers
